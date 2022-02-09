@@ -1,0 +1,19 @@
+{
+  "name": "javascriptweb-frontend",
+  "version": "1.0.0",
+  "description": "\"My first Javascript applikation\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limachar/JavaScriptWeb-Frontend.git"
+  },
+  "author": "Linn Mann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/limachar/JavaScriptWeb-Frontend/issues"
+  },
+  "homepage": "https://github.com/limachar/JavaScriptWeb-Frontend#readme"
+}
