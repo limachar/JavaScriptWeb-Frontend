@@ -4,3 +4,13 @@ html {
     -webkit-font-smoothing: antialiased;
     padding: 20px 0;
   }
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+    border: solid 5px #000000;
+    }
