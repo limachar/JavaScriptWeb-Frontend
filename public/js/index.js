@@ -4,6 +4,17 @@ $(function(){
     $("#subbtn").on('click', function() {
         user = $('#example').val();
         console.log(user)
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:3000/message",
+            success: function(result) {
+                alert('ok');
+                console.log('success')
+            },
+            error: function(result) {
+                alert('error');
+            }
+        })
     })  
     $("#btn").on('click', function () {
         console.log("#btn")
@@ -17,6 +28,7 @@ $(function(){
             data: { message: "this is my data"},
             success: function(result) {
                 alert('ok');
+                console.log('success')
             },
             error: function(result) {
                 alert('error');
