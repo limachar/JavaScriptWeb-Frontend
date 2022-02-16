@@ -5,91 +5,16 @@ html, body {
     margin: 0 0 0 0;
     height: 100vh;
   }
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    height: 100%;
-    width: 100%
-}
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-content: stretch;
-    align-items: flex-start;
-    margin: 20px 20px;
-    background: #fff;
-    height: 80%;
-    width: 80%;
-    }
 
-.list-wrapper {
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-    align-content: center;
-    max-width: 400px;
-    margin: 50px auto;
-    width: 25%;
-    }
-.list-wrapper h1{
-    margin: 10px;
-    color: rgb(0, 206, 51);
-}
-.list {
-    background: #fff;
-    border-radius: 2px;
-    list-style: none;
-    padding: 10px 20px;
-    }
-
-.list-item {
-    display: flex;
-    margin: 10px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-.list-item img{
-    border-radius: 50%;
-    width: 64px;
-    margin-right: 10px;
-    }
-.list-item-content{
-    margin-left: 20px;
-    
-    }
-.list-item h4, p{
-    margin: 0;        
-    }
-.list-item h4{
-    margin-top: 10px;
-    font-size: 18px;
-    color: rgb(0, 68, 156);
-    }
-.list-item p{
-    margin-top: 5px;
-    color: rgb(170, 170, 172);
-
-}
-
-.flex-item:nth-child(2) {
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-    width: 50%;
-    height: 100%;
-    background: #b0e1fa;
-    }
 .chat-box{
     margin: 10px 5px;
-    height: 75%;
+    max-height: 250px;
+    min-height: 250px;
     background: #fff;
     border-radius: 20px;
     border: solid 1px #469be0;
+    box-shadow: 0 0 3px #093577;
+    overflow-y: scroll;
 }
 .chat-wrapper {
     display: flex;
@@ -120,6 +45,7 @@ html, body {
     background-color: #f9fafb;
     padding: 24px; /* the container will keep the padding untouched */
     max-height: 145px; /* added padding to the height of the .message-text */
+    filter: drop-shadow(2px 2px 1px rgb(78, 107, 136));
     }
     
     textarea {
@@ -152,16 +78,3 @@ html, body {
           width: 100%;
       }
 
-.user-details {
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-    width: 25%;
-    }
-.user-details img{
-    border-radius: 50%;
-    width: 64px;
-    margin: 10px;
-
-
-}
