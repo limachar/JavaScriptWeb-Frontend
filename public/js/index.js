@@ -25,7 +25,7 @@ $(function(){
         $.ajax({
             type: "POST",
             url: "http://localhost:3000/messages",
-            data: { message: "this is my data"},
+            data: message,
             success: function(result) {
                 alert('ok');
                 console.log('success')
