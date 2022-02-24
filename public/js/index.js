@@ -15,13 +15,18 @@ $(function(){
                 alert('error');
             }
         })
-    })  
+    });
+    $('textarea').on('keydown', function (e) {
+        if(code == 13) {  // keycode == 13 (enter)
+            $('.textarea-clone').text($(this).val());
+        }
+    });
     $("#btn").on('click', function () {
         console.log("#btn")
         var message = $('.message-text').html();
         console.log(message)
         var date = new Date();
-        $("#box").append("<div>"+date.toDateString(),user, ": ", message+"</div>");
+        $(".chat-box").append("<div id='message'><div id='message-box'>"/*+date.toDateString(),user, ": ", */+message+"</div></div>");
         $.ajax({
             type: "POST",
             url: "http://localhost:3000/messages",
