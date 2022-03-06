@@ -9,6 +9,32 @@ if(user==null){
 }
 
 $(function(){
+    $("#btn").on('click', function () {
+        console.log("#btn")
+        var message = $('.message-text').html();
+        console.log(message)
+        var date = new Date();
+        var data = {
+            User: user,
+            Message: message}
+        $.ajax({
+            type: "POST",
+            url: "https://lima-backend.herokuapp.com/messages",
+            data: data,
+            success: function(result) {
+                console.log('success')
+            },
+            error: function(result) {
+                alert('error');
+            }
+        })
+        $.get('https://lima-backend.herokuapp.com/message', function(response){
+            console.log(response)
+            let lastMessage = response[response.length-1]
+            console.log(lastMessage)
+            $(".chat-box").append("<div id='message'>"+lastMessage.User+':'+"<div id='message-box'>"/*+date.toDateString(),user, ": ", */+lastMessage.Message+"</div></div>")
+    })
+    });
     $("#subbtn").on('click', function() {
         user = $('#example').val();
         console.log(user)
@@ -29,28 +55,21 @@ $(function(){
             $('.textarea-clone').text($(this).val());
         }
     });
-    $("#btn").on('click', function () {
-        console.log("#btn")
-        var message = $('.message-text').html();
-        console.log(message)
-        var date = new Date();
-        
-        $.ajax({
-            type: "POST",
-            url: "https://lima-backend.herokuapp.com/messages",
-            data: {user:message},
-            success: function(result) {
-                console.log('success')
-            },
-            error: function(result) {
-                alert('error');
-            }
-        })
-        $.get('https://lima-backend.herokuapp.com/message', function(response){
-            console.log(response)
-            let lastMessage = response[response.length-1]
-            console.log(lastMessage)
-            $(".chat-box").append("<div id='message'>"+user+':'+"<div id='message-box'>"/*+date.toDateString(),user, ": ", */+lastMessage.message+"</div></div>")
-    })
-    });
+
+    function updateMessages() {
+        fetch("https://lima-backend.herokuapp.com/message")
+            .then((response) => response.json())
+            .then(renderMessages);
+    }
+    const renderMessages = (messages) => {
+        messages.forEach(boxprint);
+        let objDiv = document.getElementById("box");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    };
+    function boxprint(message){
+        $(".chat-box").append("<div id='message'>"+message.User+':'+"<div id='message-box'>"/*+date.toDateString(),user, ": ", */+message.Message+"</div></div>")
+
+    }
+    updateMessages();
+    setInterval(updateMessages, 500);
 });
