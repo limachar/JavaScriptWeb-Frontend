@@ -38,7 +38,7 @@ $(function(){
         $.ajax({
             type: "POST",
             url: "https://lima-backend.herokuapp.com/messages",
-            data: {"message":message},
+            data: {user:message},
             success: function(result) {
                 console.log('success')
             },
