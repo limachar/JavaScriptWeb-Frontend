@@ -7,16 +7,17 @@ if(user==null){
        $(".header-box").append('<p>'+user+'</p>')
     })
 }
+$(".chat-box").empty()
 
 $(function(){
     $("#btn").on('click', function () {
-        console.log("#btn")
         var message = $('.message-text').html();
         console.log(message)
         var date = new Date();
         var data = {
             User: user,
-            Message: message}
+            Message: message,
+            Date: date}
         $.ajax({
             type: "POST",
             url: "https://lima-backend.herokuapp.com/messages",
@@ -50,11 +51,13 @@ $(function(){
             }
         })
     });
-    $('textarea').on('keydown', function (e) {
-        if(code == 13) {  // keycode == 13 (enter)
-            $('.textarea-clone').text($(this).val());
+    $('.message-wrapper').on('keydown', function (e) {
+        if(e.keyCode == 13) {
+            $('#btn').trigger('click')
+            $(".message-text").empty()
+            return false;
         }
-    });
+    }); 
 
     function updateMessages() {
         fetch("https://lima-backend.herokuapp.com/message")
