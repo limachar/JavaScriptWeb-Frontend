@@ -66,15 +66,13 @@ $(function(){
     }
     const renderMessages = (messages) => {
         $(".chat-box").html("")
-        messages.forEach(boxprint);
-        let objDiv = document.getElementById("box");
+        $.each(messages, function(i, message){
+            $(".chat-box").append("<div id='message'>"+message.User+':'+"<div id='message-box'>"/*+date.toDateString(),user, ": ", */+message.Message+"</div></div>") 
+        })
+        let objDiv = $("#box")[0];
         objDiv.scrollTop = objDiv.scrollHeight;
     };
-    function boxprint(message){
-        
-        $(".chat-box").append("<div id='message'>"+message.User+':'+"<div id='message-box'>"/*+date.toDateString(),user, ": ", */+message.Message+"</div></div>")
-        
-    }
+    
     updateMessages();
     setInterval(updateMessages, 500);
 });
