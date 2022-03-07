@@ -7,7 +7,6 @@ if(user==null){
        $(".header-box").append('<p>'+user+'</p>')
     })
 }
-$(".chat-box").empty()
 
 $(function(){
     $("#btn").on('click', function () {
@@ -53,6 +52,7 @@ $(function(){
     });
     $('.message-wrapper').on('keydown', function (e) {
         if(e.keyCode == 13) {
+            console.log("enter")
             $('#btn').trigger('click')
             $(".message-text").empty()
             return false;
@@ -65,13 +65,15 @@ $(function(){
             .then(renderMessages);
     }
     const renderMessages = (messages) => {
+        $(".chat-box").html("")
         messages.forEach(boxprint);
         let objDiv = document.getElementById("box");
         objDiv.scrollTop = objDiv.scrollHeight;
     };
     function boxprint(message){
+        
         $(".chat-box").append("<div id='message'>"+message.User+':'+"<div id='message-box'>"/*+date.toDateString(),user, ": ", */+message.Message+"</div></div>")
-
+        
     }
     updateMessages();
     setInterval(updateMessages, 500);
